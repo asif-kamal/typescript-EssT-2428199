@@ -4,13 +4,26 @@ const todoItems = [
     { id: 3, title: "Write the best app in the world", status: "todo" },
 ]
 
-function addTodoItem(todo) {
+interface Todo {
+    id: number,
+    title: string,
+    status: TodoStatus,
+    completedOn?: Date
+}
+
+enum TodoStatus {
+    InProgress = "in-progress",
+    Todo = "todo",
+    Done = "done"
+}
+
+function addTodoItem(todo: string): Todo {
     const id = getNextId(todoItems)
 
     const newTodo = {
         id,
         title: todo,
-        status: "todo",
+        status: TodoStatus.Todo,
     }
 
     todoItems.push(newTodo)
@@ -18,7 +31,7 @@ function addTodoItem(todo) {
     return newTodo
 }
 
-function getNextId(items) {
+function getNextId<T extends { id: number }>(items: T[]): number {
     return items.reduce((max, x) => x.id > max ? x.id : max, 0) + 1
 }
 

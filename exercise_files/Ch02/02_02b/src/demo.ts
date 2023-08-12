@@ -10,3 +10,5 @@ let primaryContact: Contact = {
     name: "",
     birthDate: undefined
 }
+
+type ContactName = string
