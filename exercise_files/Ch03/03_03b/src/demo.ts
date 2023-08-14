@@ -32,3 +32,9 @@ function toContact(nameOrContact) {
         }
     }
 }
+
+type Awesome = Contact["id"]
+
+interface ConatactEvent {
+    contactId: Contact["id"]
+}
